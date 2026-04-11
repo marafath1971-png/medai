@@ -1,0 +1,193 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+  APPLE
+}
+
+enum ProfileType {
+  SELF
+  DEPENDENT
+  CAREGIVER
+}
+
+enum IntakeStatus {
+  PENDING
+  TAKEN
+  MISSED
+  SNOOZED
+}
+
+enum NotificationType {
+  REMINDER
+  LOW_STOCK
+  REFILL
+  ADHERENCE
+  SYSTEM
+}
+
+enum DoseForm {
+  TABLET
+  CAPSULE
+  LIQUID
+  INJECTION
+  TOPICAL
+  INHALER
+  OTHER
+}
+
+model User {
+  id               String       @id @default(uuid())
+  email            String       @unique
+  passwordHash     String?
+  firstName        String
+  lastName         String
+  phone            String?
+  emailVerified    Boolean      @default(false)
+  twoFactorEnabled Boolean      @default(false)
+  twoFactorSecret  String?
+  authProvider     AuthProvider @default(EMAIL)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  medications      Medication[]
+  doseLogs         DoseLog[]
+  profiles         UserProfile[]
+  reminders        Reminder[]
+  notifications    Notification[]
+  adherenceStats   AdherenceStats[]
+
+  @@map("users")
+}
+
+model UserProfile {
+  id                String      @id @default(uuid())
+  userId            String
+  name              String
+  profileType       ProfileType @default(DEPENDENT)
+  dateOfBirth       DateTime?
+  gender            String?
+  medicalConditions String?
+  isActive          Boolean     @default(true)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+model Medication {
+  id              String      @id @default(uuid())
+  userId          String
+  name            String
+  genericName     String?
+  dosage          String
+  form            DoseForm    @default(TABLET)
+  frequency       String
+  pillCount       Int         @default(0)
+  refillThreshold Int         @default(7)
+  instructions    String?
+  startDate       DateTime    @default(now())
+  endDate         DateTime?
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  doseSchedules   DoseSchedule[]
+  doseLogs        DoseLog[]
+  reminders       Reminder[]
+
+  @@map("medications")
+}
+
+model DoseSchedule {
+  id              String       @id @default(uuid())
+  medicationId    String
+  scheduledTime   String
+  doseStatus      IntakeStatus @default(PENDING)
+  notes           String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  medication     Medication   @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+
+  @@map("dose_schedules")
+}
+
+model DoseLog {
+  id              String       @id @default(uuid())
+  userId          String
+  medicationId    String
+  scheduledTime   DateTime
+  takenTime       DateTime?
+  intakeStatus    IntakeStatus @default(PENDING)
+  notes           String?
+  symptoms        String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  medication     Medication  @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+
+  @@map("dose_logs")
+}
+
+model Reminder {
+  id              String           @id @default(uuid())
+  userId          String
+  medicationId    String
+  scheduledTime   DateTime
+  isActive        Boolean          @default(true)
+  reminderType   NotificationType @default(REMINDER)
+  snoozeCount     Int               @default(0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  medication     Medication  @relation(fields: [medicationId], references: [id], onDelete: Cascade)
+
+  @@map("reminders")
+}
+
+model Notification {
+  id                String           @id @default(uuid())
+  userId            String
+  title             String
+  body              String
+  notificationType  NotificationType @default(SYSTEM)
+  isRead            Boolean          @default(false)
+  sentAt            DateTime         @default(now())
+
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model AdherenceStats {
+  id              String    @id @default(uuid())
+  userId          String
+  date            DateTime
+  adherenceScore  Float
+  totalDoses      Int
+  takenDoses      Int
+  missedDoses     Int
+  snoozedDoses    Int
+  streakCount     Int
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@map("adherence_stats")
+}

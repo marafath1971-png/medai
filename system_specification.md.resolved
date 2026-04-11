@@ -1,0 +1,147 @@
+# MedTrack AI — System Specification & Documentation
+
+This document provides a comprehensive technical overview of the MedTrack AI application, including requirements, behavior diagrams, and structural architecture.
+
+## 1. Software Requirements Specification (SRS)
+
+### 1.1 Introduction
+MedTrack AI is a high-fidelity, industrial-grade medication management platform designed to provide users with precision tracking, AI-powered prescription scanning, and predictive health insights. The system prioritizes a minimalist "monochrome" aesthetic while delivering complex data density.
+
+### 1.2 Functional Requirements (FR)
+- **FR-01: Pill Scanning (MedScan AI)**: Users can scan clinical labels or pills using the camera. The system must extract name, dosage, and frequency using AI analysis.
+- **FR-02: Precision Logging**: Users must be able to log medication intake (Adherent, Missed, or Snoozed).
+- **FR-03: Multi-Profile Management**: Support for managed profiles (e.g., family members or dependents).
+- **FR-04: Predictive Insights**: System generates "Body Impact" and "AI Coach" insights based on adherence patterns and logged symptoms.
+- **FR-05: Inventory Controls**: Automated calculation of remaining medicine supply with "low stock" alerts.
+- **FR-06: Security & Privacy**: Biometric lock screen and local-first data persistence options.
+
+### 1.3 Non-Functional Requirements (NFR)
+- **NFR-01: High-Fidelity UI**: Adherence to the "Cal AI" monochrome design system with glassmorphism and bento-grid layouts.
+- **NFR-02: Performance**: App must launch and display the Home Tab dashboard in under 2 seconds.
+- **NFR-03: Reliability**: Offline-first architecture to ensure logging is possible without network connectivity.
+- **NFR-04: Scalability**: Architecture must support expansion from simple medication logging to clinical trial auditing.
+
+---
+
+## 2. Data Flow Diagram (DFD)
+
+### Level 0: Context Diagram
+```mermaid
+graph LR
+    User((User)) -- "Scans Label / Logs Dose" --> MedTrackAI[MedTrack AI System]
+    MedTrackAI -- "Notifications / Health Insights" --> User
+    MedTrackAI -- "Medical Data" --> Firebase[(Cloud Storage/DB)]
+    Firebase -- "Sync/Auth" --> MedTrackAI
+```
+
+### Level 1: Functional DFD
+```mermaid
+graph TD
+    A[User] -->|Camera Stream| B[MedScan AI Processor]
+    B -->|Extracted Labels| C[Medication Repository]
+    A -->|Manual Entry| C
+    C -->|State Updates| D[AppState Controller]
+    D -->|Persistence| E[(Local Database / Prefs)]
+    D -->|Sync| F[Cloud Data Source]
+    D -->|Uptime/Stats| G[Analytics Engine]
+    G -->|Insights| A
+```
+
+---
+
+## 3. Use Case Diagram
+
+```mermaid
+usecaseDiagram
+    actor "Patient / Caregiver" as User
+    actor "AI Engine" as AI
+    
+    package "MedTrack AI System" {
+        usecase "Scan Prescription" as UC1
+        usecase "Log Medication Intake" as UC2
+        usecase "Manage Inventory" as UC3
+        usecase "View Health Scores" as UC4
+        usecase "Configure Profiles" as UC5
+    }
+    
+    User --> UC1
+    User --> UC2
+    User --> UC3
+    User --> UC4
+    User --> UC5
+    
+    UC1 ..> AI : <<include>>
+    UC4 ..> AI : <<include>>
+```
+
+---
+
+## 4. Class Diagram
+
+```mermaid
+classDiagram
+    class Medicine {
+        +String id
+        +String name
+        +String dose
+        +String form
+        +int count
+        +String category
+        +isLowStock() bool
+    }
+    
+    class DoseItem {
+        +String key
+        +DateTime scheduledTime
+        +bool isTaken
+        +Medicine medicine
+    }
+    
+    class AppState {
+        +List~Medicine~ meds
+        +Map~String, bool~ takenToday
+        +int streak
+        +addMed(Medicine)
+        +toggleDose(DoseItem)
+        +getAdherenceScore() double
+    }
+    
+    class MedicationRepository {
+        +fetchMeds()
+        +saveMed(Medicine)
+        +deleteMed(String)
+    }
+    
+    class UserProfile {
+        +String name
+        +String email
+        +bool isPremium
+        +Settings settings
+    }
+    
+    AppState "1" *-- "many" Medicine : tracks
+    AppState "1" *-- "many" DoseItem : manages
+    MedicationRepository -- AppState : populates
+    AppState -- UserProfile : associated with
+```
+
+---
+
+## 5. Technical Documentation
+
+### 5.1 Tech Stack
+- **Frontend**: Flutter (Latest Stable)
+- **State Management**: Provider / ChangeNotifier for reactive UI updates.
+- **Persistence**: 
+    - `shared_preferences` for lightweight settings.
+    - Local File System / Secure Storage for clinical data.
+- **AI Integration**: Google Gemini API (via Firebase Vertex AI) for prescription parsing and symptom analysis.
+- **Analytics**: Firebase Analytics for usage patterns (HIPAA compliant metadata).
+- **Animations**: `flutter_animate` for the bento-grid and integrated pill navigation behaviors.
+
+### 5.2 Folder Structure
+- `lib/domain`: Core entities and repository interfaces (Domain Driven Design).
+- `lib/data`: Data source implementations and repository concrete classes.
+- `lib/providers`: App state logic and reactive controllers.
+- `lib/screens`: High-fidelity UI screens (Home, Scan, Analytics, Alarms).
+- `lib/theme`: Centralized design tokens (AppColors, AppTypography, AppShadows).
