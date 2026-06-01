@@ -311,35 +311,19 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
 .hp-frame{
   position:relative;z-index:10;
   width:310px;
-  height:672px;
-  border-radius:48px;
+  height:620px;
+  border-radius:20px;
   overflow:hidden;
-  background: #000;
-  border: 10px solid #1a1a1c;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
   filter:
     drop-shadow(0 32px 56px rgba(0,0,0,.7))
     drop-shadow(0 8px 20px rgba(0,0,0,.4));
   animation:float-phone 6s ease-in-out infinite;
 }
-.hp-frame::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 28px;
-  background: #000;
-  border-radius: 14px;
-  box-shadow: inset 0 0 2px rgba(255,255,255,0.1);
-  z-index: 20;
-}
 .hp-img{
   width:100%;height:100%;display:block;
   object-fit:cover;
-  transform:scale(1.1);
-  border-radius:36px;
+  transform:scale(1.22); /* Zoom in to cleanly crop out the outer black bezel shape baked in the image */
+  border-radius:20px;
   transition:opacity .35s var(--ease),transform .35s var(--ease);
 }
 @keyframes float-phone{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -477,36 +461,20 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
 }
 .sp-phone{
   position:relative;z-index:2;
-  width:310px;height:672px;
-  border-radius:48px;
+  width:310px;height:620px;
+  border-radius:20px;
   overflow:hidden;
-  background: #000;
-  border: 10px solid #1a1a1c;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
   filter:
     drop-shadow(0 32px 48px rgba(0,0,0,.65))
     drop-shadow(0 8px 16px rgba(0,0,0,.35));
   animation:float-phone 6s ease-in-out infinite;
 }
-.sp-phone::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 28px;
-  background: #000;
-  border-radius: 14px;
-  box-shadow: inset 0 0 2px rgba(255,255,255,0.1);
-  z-index: 20;
-}
-.sp-phone::before{display:none}
+.sp-phone::before,.sp-phone::after{display:none}
 .sp-screen{
   width:100%;height:100%;display:block;
   object-fit:cover;
-  transform:scale(1.1);
-  border-radius:36px;
+  transform:scale(1.22); /* Zoom in to crop out the outer rounded corner bezel shape from the image */
+  border-radius:20px;
   view-transition-name:app-screen;
   transition:opacity .4s var(--ease),transform .4s var(--ease);
 }
@@ -951,12 +919,8 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
   .hero-right{order:-1}
   .fc-top-left,.fc-bottom-right,.fc-mid-right,.fc-bottom-left{display:none}
   .hp-ring-1,.hp-ring-2{display:none}
-  .hp-frame{width:260px;height:564px;border-radius:40px;border-width:8px}
-  .hp-img{border-radius:32px}
-  .hp-frame::after{top:12px;width:80px;height:24px;border-radius:12px}
-  .sp-phone{width:260px;height:564px;border-radius:40px;border-width:8px}
-  .sp-screen{border-radius:32px}
-  .sp-phone::after{top:12px;width:80px;height:24px;border-radius:12px}
+  .hp-frame{width:260px;height:520px}
+  .sp-phone{width:260px;height:520px}
   .urgency-bar{justify-content:center}
   .ub-track{display:none}
   .problem-grid{grid-template-columns:1fr}
@@ -992,12 +956,8 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
   .inner{padding-inline:20px}
   .section{padding-block:56px}
   .hero-phone-wrap{padding:24px 0}
-  .hp-frame{width:230px;height:498px;border-radius:36px;border-width:6px}
-  .hp-img{border-radius:28px}
-  .hp-frame::after{top:10px;width:70px;height:22px;border-radius:11px}
-  .sp-phone{width:230px;height:498px;border-radius:36px;border-width:6px}
-  .sp-screen{border-radius:28px}
-  .sp-phone::after{top:10px;width:70px;height:22px;border-radius:11px}
+  .hp-frame{width:230px;height:460px}
+  .sp-phone{width:230px;height:460px}
   .hero-h1{font-size:clamp(32px,10vw,48px);margin-bottom:16px}
   .hero-sub{font-size:16px;margin-bottom:32px}
   .stat-n{font-size:36px}
@@ -1424,98 +1384,3 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
 }
 
 
-
-/* ── Video Demo Sequence Animations ── */
-.vid-seq {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  width: 100%; height: 100%;
-}
-.vid-slide {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0;
-  transform: scale(1.05) translateY(10px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-.vid-slide-active {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Video UI Overlay */
-.vid-ui {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 30px 24px 24px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.vid-caption {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-  font-family: var(--sans);
-  text-align: center;
-  transition: opacity 0.3s;
-}
-.vid-progress-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.vid-bar {
-  height: 100%;
-  width: 0%;
-  background: #00e88f;
-  box-shadow: 0 0 10px #00e88f;
-  border-radius: 4px;
-}
-
-/* Scanner Laser Animation */
-.vid-laser {
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: #00e88f;
-  box-shadow: 0 0 15px #00e88f, 0 0 30px #00e88f;
-  animation: laserScan 2s infinite ease-in-out alternate;
-  opacity: 0;
-}
-.vid-slide-active .vid-laser {
-  opacity: 1;
-}
-@keyframes laserScan {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(250px); }
-}
-
-/* Danger Ping Animation */
-.vid-danger-ping {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #ef4444;
-  animation: dangerPing 1.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
-  opacity: 0;
-}
-.vid-slide-active .vid-danger-ping {
-  opacity: 1;
-}
-@keyframes dangerPing {
-  0% { width: 0; height: 0; opacity: 1; }
-  100% { width: 120px; height: 120px; opacity: 0; }
-}
