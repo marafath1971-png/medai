@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MedAI scans any medicine label in seconds, flags drug interactions, sets smart reminders, and tracks your daily adherence. Claim founder access before launch — $19/year.">
+  <meta name="theme-color" content="#020406">
+  <meta property="og:title" content="MedAI — AI-Powered Medicine Intelligence. Launching 2026.">
+  <meta property="og:description" content="Scan. Understand. Remember. The AI medicine app you've been waiting for.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="landing-assets/body_impact_phone_clean.png">
+  <title>MedAI — AI Medicine Intelligence. Launching 2026.</title>
+  <link rel="icon" type="image/png" href="landing-assets/app_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ SECURE PAYMENT REDIRECT OVERLAY ═══ -->
+<div id="secureOverlay" class="secure-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="secTitle">
+  <div class="secure-card">
+    <div class="sec-shield-wrap">
+      <div class="sec-shield-pulse"></div>
+      <div class="sec-shield-icon">🛡️</div>
+    </div>
+    
+    <div class="secure-header-text">
+      <h3 id="secTitle" class="secure-title">Securing Your Connection</h3>
+      <p class="secure-subtitle">Preparing your encrypted pre-order session...</p>
+    </div>
+
+    <div class="secure-progress-track">
+      <div id="secProgressFill" class="secure-progress-fill"></div>
+    </div>
+
+    <div class="secure-steps">
+      <div id="step1" class="sec-step active">
+        <span class="sec-step-dot"></span>
+        <span class="sec-step-label">Validating pre-launch founder spot...</span>
+      </div>
+      <div id="step2" class="sec-step">
+        <span class="sec-step-dot"></span>
+        <span class="sec-step-label">Encrypting session metadata...</span>
+      </div>
+      <div id="step3" class="sec-step">
+        <span class="sec-step-dot"></span>
+        <span class="sec-step-label">Generating Lemon Squeezy secure link...</span>
+      </div>
+      <div id="step4" class="sec-step">
+        <span class="sec-step-dot"></span>
+        <span class="sec-step-label">Redirecting to checkout page...</span>
+      </div>
+    </div>
+
+    <div class="secure-footer">
+      <div class="sec-trust-badges">
+        <span class="sec-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          SSL Secured
+        </span>
+        <span class="sec-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          256-bit AES
+        </span>
+        <span class="sec-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          Verified Merchant
+        </span>
+      </div>
+      <p class="sec-processor-info">Securely processed by <strong>Lemon Squeezy</strong>, LLC<br>Merchant of Record · PCI-DSS Compliant</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ANNOUNCEMENT BAR ═══ -->
+<div id="announcementBar" class="ann-bar">
+  <div class="ann-inner">
+    <span class="ann-dot"></span>
+    <span>Founder access open — only <strong id="spotsLeft">47</strong> spots at $19/yr · Save 61%</span>
+    <a href="#signup" class="ann-link">Claim yours →</a>
+  </div>
+  <button id="closeBar" class="ann-close" aria-label="Dismiss">×</button>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="mainNav" class="nav">
+  <div class="nav-wrap inner">
+    <a class="logo" href="#top">
+      <img src="landing-assets/app_icon.png" alt="MedAI" class="logo-img">
+      <span>MedAI</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#showcase">App Preview</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="#signup" class="btn-ghost-sm" data-plan="waitlist">Join free</a>
+      <a href="#signup" class="btn-primary-sm glow-btn" data-plan="founder-year">Founder — $19</a>
+    </div>
+    <button id="burger" class="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="top" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hb-mesh"></div>
+    <div class="hb-orb hb-orb-1"></div>
+    <div class="hb-orb hb-orb-2"></div>
+    <div class="hb-orb hb-orb-3"></div>
+    <div class="hb-grain"></div>
+    <div class="hb-grid"></div>
+    <div id="spotlight" class="spotlight"></div>
+  </div>
+
+  <div class="hero-content inner">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="live-dot"></span>
+        Private beta · Launching 2026
+      </div>
+
+      <h1 class="hero-h1">Your medications,<br><span class="grad-text">finally made simple.</span></h1>
+
+      <p class="hero-sub">Scan any pill bottle or label in 3 seconds. Get instant plain-English body reviews, dangerous drug interaction warnings, and automated smart schedules. <strong>MedAI</strong> is the personal safety guard your prescriptions deserve.</p>
+
+      <div class="hero-actions">
+        <a href="#signup" class="btn-hero-primary glow-btn pulse-ring" data-plan="founder-year">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Claim Founder Access — $19/yr
+        </a>
+        <a href="#showcase" class="btn-hero-ghost">
+          See the app →
+        </a>
+      </div>
+
+      <div class="hero-social-proof">
+        <div class="sp-avatars" aria-hidden="true">
+          <span class="sp-av" style="background:#3b82f6">S</span>
+          <span class="sp-av" style="background:#8b5cf6">M</span>
+          <span class="sp-av" style="background:#f59e0b">A</span>
+          <span class="sp-av" style="background:#ec4899">J</span>
+          <span class="sp-av" style="background:#14b8a6">R</span>
+        </div>
+        <div class="sp-text">
+          <div class="sp-stars" aria-label="5 stars">★★★★★</div>
+          <span>Loved by <strong>500+</strong> early access members</span>
+        </div>
+      </div>
+
+      <div class="hero-pills">
+        <span class="hpill">✓ No card for free list</span>
+        <span class="hpill">✓ 30-day money-back</span>
+        <span class="hpill">✓ Privacy-first</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Phone Mockup -->
+    <div class="hero-right" aria-hidden="true">
+      <div class="hero-phone-wrap">
+        <div class="hp-glow"></div>
+        <div class="hp-ring hp-ring-1"></div>
+        <div class="hp-ring hp-ring-2"></div>
+
+        <div class="hp-frame">
+          <img id="heroScreen" src="landing-assets/body_impact_v2.png"
+               alt="MedAI app screen" class="hp-img">
+        </div>
+
+        <!-- Floating UI cards -->
+        <div class="fcard fc-top-left">
+          <div class="fc-icon" style="background:rgba(0,232,143,0.15);color:#00e88f">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3l-1.5-2Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </div>
+          <div class="fc-body">
+            <strong>Scan complete</strong>
+            <span>Lisinopril 10mg · 2.8s</span>
+          </div>
+        </div>
+
+        <div class="fcard fc-bottom-right">
+          <div class="fc-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">🔥</div>
+          <div class="fc-body">
+            <strong>14-day streak!</strong>
+            <span>100% adherence</span>
+          </div>
+        </div>
+
+        <div class="fcard fc-mid-right">
+          <div class="fc-icon" style="background:rgba(239,68,68,0.15);color:#ef4444">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="fc-body">
+            <strong>Interaction flagged</strong>
+            <span>Check with pharmacist</span>
+          </div>
+        </div>
+
+        <div class="fcard fc-bottom-left">
+          <div class="fc-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6">📦</div>
+          <div class="fc-body">
+            <strong>Refill in 5 days</strong>
+            <span>Metformin running low</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen switcher tabs -->
+      <div class="screen-tabs">
+        <button class="stab stab-active" data-screen="landing-assets/body_impact_v2.png" data-label="Body Impact">Body Impact</button>
+        <button class="stab" data-screen="landing-assets/scan_result_v2.png" data-label="Scan Result">Scan Result</button>
+        <button class="stab" data-screen="landing-assets/scanner_v2.png" data-label="Scanner">Scanner</button>
+        <button class="stab" data-screen="landing-assets/dashboard_v2.png" data-label="Dashboard">Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Urgency bar -->
+  <div class="urgency-bar inner">
+    <div class="ub-left">
+      <span class="ub-flame">🔥</span>
+      <span>Only <strong id="heroSpots">47</strong> of 100 founder spots remaining</span>
+    </div>
+    <div class="ub-track">
+      <div class="ub-fill" id="heroFill"></div>
+    </div>
+    <a href="#signup" class="ub-cta" data-plan="founder-year">Lock in $19 →</a>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-set">
+      <span>✦ AI Medicine Scanner</span><span>✦ Drug Interactions</span><span>✦ Smart Reminders</span>
+      <span>✦ Body Impact Review</span><span>✦ Refill Guard</span><span>✦ Daily Health Score</span>
+      <span>✦ 30-Day History</span><span>✦ Family Circle</span><span>✦ Clinical Reports</span>
+      <span>✦ Privacy-First</span><span>✦ iOS &amp; Android</span><span>✦ Founder Price Locked</span>
+    </div>
+    <div class="ticker-set" aria-hidden="true">
+      <span>✦ AI Medicine Scanner</span><span>✦ Drug Interactions</span><span>✦ Smart Reminders</span>
+      <span>✦ Body Impact Review</span><span>✦ Refill Guard</span><span>✦ Daily Health Score</span>
+      <span>✦ 30-Day History</span><span>✦ Family Circle</span><span>✦ Clinical Reports</span>
+      <span>✦ Privacy-First</span><span>✦ iOS &amp; Android</span><span>✦ Founder Price Locked</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar">
+  <div class="inner stats-inner">
+    <div class="stat reveal"><div class="stat-n"><span class="count" data-to="500">0</span><span>+</span></div><div class="stat-l">Early access members</div></div>
+    <div class="stat-div"></div>
+    <div class="stat reveal"><div class="stat-n"><span class="count" data-to="3">0</span><span>s</span></div><div class="stat-l">Label to medicine card</div></div>
+    <div class="stat-div"></div>
+    <div class="stat reveal"><div class="stat-n static">$19</div><div class="stat-l">Founder price (vs $49)</div></div>
+    <div class="stat-div"></div>
+    <div class="stat reveal"><div class="stat-n static">61%</div><div class="stat-l">Pre-launch savings</div></div>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══ APP SHOWCASE ═══ -->
+<section id="showcase" class="section showcase-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">See It In Action</div>
+      <h2>Real screens. Real features.<br><span class="grad-text">All built for your routine.</span></h2>
+      <p>Every screen is crafted to make medicine management effortless. Tap a feature below to explore it.</p>
+    </div>
+
+    <div class="showcase-layout">
+      <!-- Feature tabs (left) -->
+      <div class="showcase-tabs" id="showcaseTabs">
+        <button class="show-tab show-tab-active" data-idx="0" type="button" style="--tab-accent:#00e88f;--tab-glow:rgba(0,232,143,0.3)">
+          <div class="st-icon" style="background:rgba(0,232,143,0.1);color:#00e88f">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3l-1.5-2Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </div>
+          <div class="st-text">
+            <strong>AI Medicine Scanner</strong>
+            <span>Point camera → 3-second scan → full medicine card</span>
+          </div>
+          <div class="st-arrow">→</div>
+        </button>
+
+        <button class="show-tab" data-idx="1" type="button" style="--tab-accent:#3b82f6;--tab-glow:rgba(59,130,246,0.3)">
+          <div class="st-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          </div>
+          <div class="st-text">
+            <strong>Body Impact Review</strong>
+            <span>See how each medicine affects your body systems</span>
+          </div>
+          <div class="st-arrow">→</div>
+        </button>
+
+        <button class="show-tab" data-idx="2" type="button" style="--tab-accent:#f59e0b;--tab-glow:rgba(245,158,11,0.3)">
+          <div class="st-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>
+          </div>
+          <div class="st-text">
+            <strong>Smart Reminders &amp; Tracking</strong>
+            <span>Never miss a dose — reminders built from the label</span>
+          </div>
+          <div class="st-arrow">→</div>
+        </button>
+
+        <button class="show-tab" data-idx="3" type="button" style="--tab-accent:#8b5cf6;--tab-glow:rgba(139,92,246,0.3)">
+          <div class="st-icon" style="background:rgba(139,92,246,0.1);color:#8b5cf6">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <div class="st-text">
+            <strong>Dashboard &amp; Health Score</strong>
+            <span>100-point daily score, streaks, and your full routine</span>
+          </div>
+          <div class="st-arrow">→</div>
+        </button>
+      </div>
+
+      <!-- Phone display (right) -->
+      <div class="showcase-phone-wrap" aria-hidden="true">
+        <div class="sp-glow-bg" id="spGlowBg"></div>
+        <div class="sp-phone">
+          <img id="showcaseImg" src="landing-assets/scan_tab_phone_clean.png"
+               alt="App screen preview" class="sp-screen">
+        </div>
+        <div class="sp-label" id="spLabel">AI Medicine Scanner</div>
+        <!-- Feature callouts -->
+        <div class="sp-callout sc-top" id="scTop">
+          <div class="sc-dot"></div>
+          <div class="sc-text">Point &amp; scan any label</div>
+        </div>
+        <div class="sp-callout sc-bot" id="scBot">
+          <div class="sc-dot"></div>
+          <div class="sc-text">Results in 3 seconds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEM ═══ -->
+<section class="section problem-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Problem</div>
+      <h2>Managing medicines is harder<br>than it should be.</h2>
+      <p>Millions struggle with medication management every day — and the consequences are serious.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="prob-card reveal" style="--clr:#ef4444">
+        <div class="prob-num">01</div>
+        <div class="prob-icon">💊</div>
+        <h3>Forgetting doses</h3>
+        <p>The #1 reason prescriptions fail. Generic alarms don't account for meal timing, dosing gaps, or multiple medicines at once.</p>
+        <div class="prob-stat">~50% of chronic patients miss doses regularly</div>
+      </div>
+      <div class="prob-card reveal" style="--clr:#f59e0b">
+        <div class="prob-num">02</div>
+        <div class="prob-icon">🔍</div>
+        <h3>Confusing labels</h3>
+        <p>Labels are dense and technical. Most people can't explain what their medicine does or which foods to avoid when taking it.</p>
+        <div class="prob-stat">74% of patients don't fully understand their prescriptions</div>
+      </div>
+      <div class="prob-card reveal" style="--clr:#8b5cf6">
+        <div class="prob-num">03</div>
+        <div class="prob-icon">⚗️</div>
+        <h3>Hidden interactions</h3>
+        <p>Dangerous combinations go unnoticed. Without a system checking all medicines together, risks stay invisible until too late.</p>
+        <div class="prob-stat">125,000 deaths/year from medication errors in the US alone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES BENTO ═══ -->
+<section id="features" class="section feat-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Features</div>
+      <h2>Everything your medicine<br>routine needs. In one scan.</h2>
+      <p>One 3-second scan turns into a complete, intelligent care system.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- BIG: Scanner -->
+      <div class="bc bc-scanner reveal">
+        <div class="bc-top">
+          <div class="bc-ico" style="background:#00e88f;color:#000">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3l-1.5-2Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </div>
+          <div class="bc-tag">Core Feature</div>
+        </div>
+        <h3>AI Medicine Scanner</h3>
+        <p>Point at any bottle, box, or blister pack. MedAI extracts name, dose, form, timing, and instructions in under 3 seconds. No manual entry, ever.</p>
+        <div class="bc-demo-scan" aria-hidden="true">
+          <div class="bscan-frame">
+            <span class="bsc-corner bsc-tl"></span><span class="bsc-corner bsc-tr"></span>
+            <span class="bsc-corner bsc-bl"></span><span class="bsc-corner bsc-br"></span>
+            <div class="bscan-beam"></div>
+            <div class="bscan-text">METFORMIN 500MG</div>
+          </div>
+          <div class="bscan-results">
+            <div class="bsr">✓ Name extracted</div>
+            <div class="bsr">✓ Dose confirmed</div>
+            <div class="bsr">✓ Instructions ready</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Safety -->
+      <div class="bc bc-safety reveal" style="--bc:#3b82f6">
+        <div class="bc-ico" style="background:rgba(59,130,246,0.15);color:#3b82f6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        </div>
+        <h3>Body Impact &amp; Safety</h3>
+        <p>Get a clear breakdown of how your medications affect body systems, critical food guidelines, optimal timing, and mixed-drug safety—all in simple, plain English.</p>
+        <div class="safety-chips" aria-hidden="true">
+          <span class="schip" style="background:rgba(0,232,143,0.12);color:#00e88f;border-color:rgba(0,232,143,0.25)">Blood Sugar ↓</span>
+          <span class="schip" style="background:rgba(245,158,11,0.12);color:#f59e0b;border-color:rgba(245,158,11,0.25)">Stomach risk</span>
+          <span class="schip" style="background:rgba(239,68,68,0.12);color:#ef4444;border-color:rgba(239,68,68,0.25)">Alcohol ⚠</span>
+          <span class="schip" style="background:rgba(139,92,246,0.12);color:#8b5cf6;border-color:rgba(139,92,246,0.25)">Kidneys</span>
+        </div>
+      </div>
+
+      <!-- Score -->
+      <div class="bc bc-score reveal" style="--bc:#8b5cf6">
+        <div class="bc-ico" style="background:rgba(139,92,246,0.15);color:#8b5cf6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <h3>Daily Health Score</h3>
+        <p>A dynamic 100-point daily consistency score driven by your dose streaks, timing accuracy, and refill status to keep you motivated and accountable.</p>
+        <div class="score-ring-wrap" aria-hidden="true">
+          <svg class="score-svg" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(139,92,246,0.12)" stroke-width="6"/>
+            <circle cx="40" cy="40" r="32" fill="none" stroke="#8b5cf6" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="201" stroke-dashoffset="42"
+              transform="rotate(-90 40 40)" class="score-arc"/>
+          </svg>
+          <div class="score-num">87</div>
+        </div>
+      </div>
+
+      <!-- Reminders -->
+      <div class="bc bc-remind reveal" style="--bc:#f59e0b">
+        <div class="bc-ico" style="background:rgba(245,158,11,0.15);color:#f59e0b">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>
+        </div>
+        <h3>Smart Reminders</h3>
+        <p>Smart schedules automatically built from label text. Intelligently adapts around your sleep patterns, meal windows, and strict dose spacing rules.</p>
+        <div class="remind-preview" aria-hidden="true">
+          <div class="rp-item rp-done"><span class="rp-time">8:00 AM</span><span class="rp-pill">Metformin 500mg</span><span class="rp-check">✓</span></div>
+          <div class="rp-item rp-now"><span class="rp-time">1:00 PM</span><span class="rp-pill">Lisinopril 10mg</span><span class="rp-now-badge">Now</span></div>
+          <div class="rp-item"><span class="rp-time">8:00 PM</span><span class="rp-pill">Metformin 500mg</span><span class="rp-dot">○</span></div>
+        </div>
+      </div>
+
+      <!-- Refill -->
+      <div class="bc bc-refill reveal" style="--bc:#14b8a6">
+        <div class="bc-ico" style="background:rgba(20,184,166,0.15);color:#14b8a6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="m16 8 6 3-6 3V8z"/><path d="M1 21l4-4 4 4"/></svg>
+        </div>
+        <h3>Refill Guard</h3>
+        <p>Never run out again. MedAI alerts you 5+ days before your pills run low and auto-prepares pharmacy-ready refill details.</p>
+        <div class="refill-viz" aria-hidden="true">
+          <div class="rv-bar"><span>Metformin</span><div class="rv-track"><div class="rv-fill" data-w="72" style="width:0%;background:#00e88f"></div></div><span class="rv-days">18d</span></div>
+          <div class="rv-bar"><span>Lisinopril</span><div class="rv-track"><div class="rv-fill" data-w="35" style="width:0%;background:#f59e0b"></div></div><span class="rv-days">9d</span></div>
+          <div class="rv-bar"><span>Aspirin</span><div class="rv-track"><div class="rv-fill" data-w="12" style="width:0%;background:#ef4444"></div></div><span class="rv-days rv-low">3d ⚠</span></div>
+        </div>
+      </div>
+
+      <!-- Family -->
+      <div class="bc bc-family reveal" style="--bc:#ec4899">
+        <div class="bc-ico" style="background:rgba(236,72,153,0.15);color:#ec4899">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Family &amp; Caregiver Circle</h3>
+        <p>Add family members, share adherence status, set caregiver alerts, and generate doctor-ready 30-day reports — together.</p>
+        <div class="family-avatars" aria-hidden="true">
+          <span class="fam-av" style="background:#3b82f6">A</span>
+          <span class="fam-av" style="background:#8b5cf6">M</span>
+          <span class="fam-av" style="background:#f59e0b">J</span>
+          <span class="fam-av fam-more">+2</span>
+          <div class="fam-status"><svg width="10" height="10" viewBox="0 0 24 24" fill="#00e88f"><circle cx="12" cy="12" r="10"/></svg> All adherent today</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section id="how" class="section how-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2>Scan to full routine<br>in under 60 seconds.</h2>
+    </div>
+    <div class="how-row">
+      <div class="how-card reveal">
+        <div class="how-n">01</div>
+        <div class="how-line-wrap"><div class="how-dot"></div><div class="how-line"></div></div>
+        <div class="how-body">
+          <div class="how-emoji" aria-hidden="true">📸</div>
+          <h3>Scan the label</h3>
+          <p>Point your camera at any medicine packaging. MedAI reads and structures all the key data in under 3 seconds. No typing.</p>
+        </div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-n">02</div>
+        <div class="how-line-wrap"><div class="how-dot"></div><div class="how-line"></div></div>
+        <div class="how-body">
+          <div class="how-emoji" aria-hidden="true">🧠</div>
+          <h3>Review body impact</h3>
+          <p>Check what the medicine does, its side effects, food rules, and whether it interacts with anything else you take.</p>
+        </div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-n">03</div>
+        <div class="how-line-wrap"><div class="how-dot"></div><div class="how-line"></div></div>
+        <div class="how-body">
+          <div class="how-emoji" aria-hidden="true">⏰</div>
+          <h3>Set your routine</h3>
+          <p>Smart reminders are pre-filled from the label data. Adjust timing, add notes, and enable refill alerts in seconds.</p>
+        </div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-n">04</div>
+        <div class="how-line-wrap"><div class="how-dot"></div></div>
+        <div class="how-body">
+          <div class="how-emoji" aria-hidden="true">📈</div>
+          <h3>Track &amp; improve</h3>
+          <p>Watch your adherence streak grow, monitor refill stock, and share your care context with family day after day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section testi-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Early Feedback</div>
+      <h2>Beta testers are already<br>loving MedAI.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tc reveal">
+        <div class="tc-stars">★★★★★</div>
+        <p>"I had no idea two of my medicines could interact badly. MedAI flagged it immediately. My pharmacist confirmed it. This app might have saved me from a serious problem."</p>
+        <div class="tc-footer">
+          <div class="tc-av" style="background:#3b82f6">S</div>
+          <div>
+            <strong>Sarah K.</strong>
+            <span>Managing 4 medications daily</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc reveal">
+        <div class="tc-stars">★★★★★</div>
+        <p>"The scan is actually magic. I pointed at my mom's pill bottle — in 3 seconds I had a full breakdown: what it does, when she takes it, what to avoid. She's 74. This just works."</p>
+        <div class="tc-footer">
+          <div class="tc-av" style="background:#8b5cf6">M</div>
+          <div>
+            <strong>Marcus T.</strong>
+            <span>Caregiver for aging parent</span>
+          </div>
+        </div>
+      </div>
+      <div class="tc reveal">
+        <div class="tc-stars">★★★★★</div>
+        <p>"The streak system is genuinely motivating. Zero missed doses in 3 weeks. I never thought I'd care about a streak, but watching my score climb keeps me accountable every day."</p>
+        <div class="tc-footer">
+          <div class="tc-av" style="background:#ec4899">A</div>
+          <div>
+            <strong>Aisha R.</strong>
+            <span>Chronic condition management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing" class="section pricing-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Pricing</div>
+      <h2>Simple. Transparent.<br>Built for early believers.</h2>
+      <p>Regular price is <strong>$49/year</strong> at launch. Founder Access locks your rate at $19 — forever. <span id="pricingSpots">47</span> spots left.</p>
+    </div>
+    <div class="pricing-cards">
+      <!-- Free -->
+      <div class="pc reveal">
+        <div class="pc-type">Priority Waitlist</div>
+        <div class="pc-price"><span class="pc-amt">$0</span><span class="pc-per">forever</span></div>
+        <p class="pc-desc">Watch the launch, get updates, stay in the queue. Zero risk.</p>
+        <ul class="pc-list">
+          <li class="yes">Launch updates &amp; milestones</li>
+          <li class="yes">Priority queue position</li>
+          <li class="yes">Referral invite link</li>
+          <li class="no">Founder access badge</li>
+          <li class="no">Price locked forever</li>
+          <li class="no">Full app on day one</li>
+        </ul>
+        <a href="#signup" class="btn-outline-full" data-plan="waitlist">Join free list</a>
+      </div>
+
+      <!-- Founder -->
+      <div class="pc pc-hero reveal">
+        <div class="pc-best">⚡ Best value · <span id="pricingSpots2">47</span> spots left</div>
+        <div class="pc-type" style="color:#00e88f">Founder Access</div>
+        <div class="pc-price">
+          <span class="pc-amt">$19</span>
+          <span class="pc-per">/ first year</span>
+        </div>
+        <div class="pc-save">Save 61% — regular price $49/yr at launch</div>
+        <p class="pc-desc">Full app, every feature, founder price locked forever, and first into private beta.</p>
+        <ul class="pc-list">
+          <li class="yes">Priority private beta invite</li>
+          <li class="yes">AI scanner (unlimited scans)</li>
+          <li class="yes">Drug interaction checker</li>
+          <li class="yes">Smart reminders &amp; refill guard</li>
+          <li class="yes">Family &amp; caregiver circle</li>
+          <li class="yes">30-day history &amp; clinical reports</li>
+          <li class="yes gold">Permanent founder badge</li>
+          <li class="yes gold">Price locked forever ∞</li>
+        </ul>
+        <a href="#signup" class="btn-primary-full glow-btn pulse-ring" data-plan="founder-year">
+          Claim founder access — $19
+        </a>
+        <p class="pc-note">Secure checkout · Lemon Squeezy · 30-day money-back guarantee</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SIGNUP ═══ -->
+<section id="signup" class="section signup-section">
+  <div class="inner">
+    <div class="signup-layout">
+      <!-- LEFT -->
+      <div class="su-left reveal">
+        <div class="eyebrow">Get Your Spot</div>
+        <h2>Join the people building<br>better medicine habits.</h2>
+        <p>Choose free updates or secure your founder price before spots run out.</p>
+
+        <div class="su-perks">
+          <div class="su-perk">
+            <div class="su-pico">🔒</div>
+            <div>
+              <strong>Price locked forever</strong>
+              <span>$19/year stays your rate — even as the app grows.</span>
+            </div>
+          </div>
+          <div class="su-perk">
+            <div class="su-pico">⚡</div>
+            <div>
+              <strong>First into private beta</strong>
+              <span>Beta access before anyone on the free list.</span>
+            </div>
+          </div>
+          <div class="su-perk">
+            <div class="su-pico">🏅</div>
+            <div>
+              <strong>Permanent founder badge</strong>
+              <span>Recognised inside the product — forever.</span>
+            </div>
+          </div>
+          <div class="su-perk">
+            <div class="su-pico">💬</div>
+            <div>
+              <strong>Shape the product</strong>
+              <span>Direct input on features before launch.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="su-trust">
+          <span>🔒 Secure via Lemon Squeezy</span>
+          <span>30-day money-back</span>
+          <span>No health data collected</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="su-right reveal">
+        <div class="su-card">
+          <div class="plan-tabs">
+            <button class="ptab" data-plan="waitlist" type="button">Free list</button>
+            <button class="ptab ptab-on" data-plan="founder-year" type="button">Founder — $19 ⚡</button>
+          </div>
+          <p class="plan-hint" id="planHint">Reserve your spot. Secure Lemon Squeezy checkout opens after you submit.</p>
+
+          <form id="waitlistForm" novalidate>
+            <input type="hidden" id="planInput" name="plan" value="founder-year">
+            <div class="sf">
+              <label for="fe">Email address <span class="req">*</span></label>
+              <input type="email" id="fe" name="email" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+            <div class="sf">
+              <label for="fn">Your name</label>
+              <input type="text" id="fn" name="name" placeholder="First name" autocomplete="given-name">
+            </div>
+            <div class="sf-row">
+              <div class="sf">
+                <label for="fr">Who is this for?</label>
+                <select id="fr" name="role">
+                  <option value="myself">For myself</option>
+                  <option value="family">Family member</option>
+                  <option value="caregiver">I'm a caregiver</option>
+                  <option value="clinician">Clinical / pharmacy</option>
+                </select>
+              </div>
+              <div class="sf">
+                <label for="fd">Device</label>
+                <select id="fd" name="device">
+                  <option value="ios">iPhone</option>
+                  <option value="android">Android</option>
+                  <option value="both">Both</option>
+                  <option value="unknown">Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="sf">
+              <label for="fs">How did you hear about us?</label>
+              <input type="text" id="fs" name="referralSource" placeholder="TikTok, Instagram, friend...">
+            </div>
+            <label class="sf-check">
+              <input type="checkbox" id="fc" name="marketingConsent" checked>
+              <span>Email me launch updates. Unsubscribe any time.</span>
+            </label>
+            <button type="submit" class="btn-submit glow-btn" id="submitBtn">
+              <span id="submitText">Unlock founder access — $19/yr ⚡</span>
+            </button>
+            <p class="sf-lock">🔒 No health data collected · Secure via Lemon Squeezy</p>
+            <div id="formMsg" class="form-msg" role="status" aria-live="polite"></div>
+          </form>
+
+          <!-- Success -->
+          <div id="successState" class="success-state" hidden>
+            <div class="ss-icon">🎉</div>
+            <h3>You're in!</h3>
+            <p id="successText">Your founder spot is reserved. Check your email for next steps.</p>
+            <div id="refWrap" class="ref-box">
+              <label>Share to move up the beta queue:</label>
+              <div class="ref-row">
+                <input type="text" id="refLink" class="ref-input" readonly aria-label="Referral link">
+                <button type="button" id="copyRef" class="btn-copy">Copy</button>
+              </div>
+              <p class="ref-note">Each referral moves you closer to front of beta line.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq" class="section faq-section">
+  <div class="inner faq-inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2>Everything you're wondering about.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>What do I get with Founder Access?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Priority private beta invite, full access to every feature (AI scanner, drug interaction checks, smart reminders, refill guard, family circle, 30-day dose history &amp; reports), founder price locked at $19/year forever, and a permanent founder badge inside the app.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>When does the app launch?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Private beta targets mid-2026. Founder Access members get invited first — before everyone on the free waitlist. You'll receive email updates on exact timelines as we approach launch.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is the $19 payment secure?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Yes. After submitting, you're redirected to Lemon Squeezy — a fully regulated payment processor. Your card details are never handled by us directly. We offer a 30-day money-back guarantee, no questions asked.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is MedAI a medical diagnosis tool?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>No. MedAI organises your routine and surfaces issues to verify. All AI output is a draft to check against your prescription label. Always consult a doctor or pharmacist for medical decisions.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is my health data private?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Absolutely. This page only collects your email, name, device, and access preference. No medicine data is collected here. All medication records live securely inside the app.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Can I join the free list and upgrade later?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Yes. Join the free Priority List — no payment, no risk. You'll receive updates and a referral link to move up the beta queue. You can upgrade to Founder Access any time before the 100 spots run out.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="section final-section">
+  <div class="inner">
+    <div class="final-card reveal">
+      <div class="final-orbs" aria-hidden="true">
+        <div class="f-orb" style="background:#00e88f;top:-100px;right:-80px"></div>
+        <div class="f-orb" style="background:#3b82f6;bottom:-80px;left:-80px"></div>
+      </div>
+      <div class="final-inner">
+        <div class="eyebrow" style="color:#00e88f">Limited time — <span id="finalSpots">47</span> spots left</div>
+        <h2>Lock in your price.<br><span class="grad-text">Start building better habits.</span></h2>
+        <p>Founder Access at $19/year — only during pre-launch. Price rises to $49 when we go live.</p>
+        <div class="final-btns">
+          <a href="#signup" class="btn-final-primary glow-btn pulse-ring" data-plan="founder-year">Claim founder access — $19</a>
+          <a href="#signup" class="btn-final-ghost" data-plan="waitlist">Join free instead</a>
+        </div>
+        <div class="final-trust">
+          <span>✓ 30-day money-back</span>
+          <span>✓ Secure Lemon Squeezy</span>
+          <span>✓ No health data collected</span>
+          <span>✓ Price locked forever</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="inner footer-inner">
+    <div class="ft-brand">
+      <div class="ft-logo-row">
+        <img src="landing-assets/app_icon.png" alt="MedAI" class="ft-icon">
+        <span>MedAI</span>
+      </div>
+      <p>AI-powered medicine tracking. Built for safer, calmer daily routines. Launching 2026.</p>
+      <p class="ft-disc">MedAI is not a medical device and does not provide medical advice.</p>
+    </div>
+    <div class="ft-col">
+      <strong>Product</strong>
+      <a href="#showcase">App Preview</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="ft-col">
+      <strong>Legal &amp; Support</strong>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="compliance.html">Regulatory Compliance</a>
+      <a href="trademarks.html">Trademarks &amp; IP</a>
+      <a href="mailto:support@medtrack.ai">Contact Support</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="inner footer-bar-in">
+      <span>© 2026 MedAI. All rights reserved.</span>
+      <span>Built with care for healthier, safer routines.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ STICKY ═══ -->
+<div id="stickyBar" class="sticky-bar" aria-hidden="true">
+  <div class="inner sticky-inner">
+    <div class="sticky-left">
+      <span class="sticky-dot"></span>
+      <span>⚡ <strong id="stickySpots">47</strong> founder spots left at $19/year</span>
+    </div>
+    <a href="#signup" class="btn-sticky glow-btn" data-plan="founder-year">Claim now</a>
+  </div>
+</div>
+
+<!-- Firebase CDN Compat SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+<!-- ═══ DYNAMIC SOCIAL PROOF TOAST ═══ -->
+<div id="proofToast" class="proof-toast" aria-live="polite" aria-atomic="true">
+  <div class="pt-glow"></div>
+  <div class="pt-avatar" id="ptAvatar">S</div>
+  <div class="pt-content">
+    <strong id="ptName">Sarah K. from Boston</strong>
+    <span id="ptAction">just claimed Founder Access ⚡</span>
+  </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
