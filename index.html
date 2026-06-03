@@ -127,9 +127,9 @@
         Private beta · Launching 2026
       </div>
 
-      <h1 class="hero-h1">Your medications,<br><span class="grad-text">finally made simple.</span></h1>
+      <h1 class="hero-h1">Never Guess With<br><span class="grad-text">Your Health Again.</span></h1>
 
-      <p class="hero-sub">Scan any pill bottle or label in 3 seconds. Get instant plain-English body reviews, dangerous drug interaction warnings, and automated smart schedules. <strong>MedAI</strong> is the personal safety guard your prescriptions deserve.</p>
+      <p class="hero-sub">Instantly scan your medications to detect dangerous interactions, understand hidden side effects, and automate your daily routine. Secure lifetime peace of mind for just <strong>$19/year</strong>.</p>
 
       <div class="hero-actions">
         <a href="#signup" class="btn-hero-primary glow-btn pulse-ring" data-plan="founder-year">
@@ -170,8 +170,11 @@
         <div class="hp-ring hp-ring-2"></div>
 
         <div class="hp-frame">
+          <video id="heroVideo" class="hp-video" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 36px; display: block;">
+            <source src="landing-assets/medai.mp4" type="video/mp4">
+          </video>
           <img id="heroScreen" src="landing-assets/body_impact_v2.png"
-               alt="MedAI app screen" class="hp-img">
+               alt="MedAI app screen" class="hp-img" style="display: none;">
         </div>
 
         <!-- Floating UI cards -->
@@ -214,7 +217,8 @@
 
       <!-- Screen switcher tabs -->
       <div class="screen-tabs">
-        <button class="stab stab-active" data-screen="landing-assets/body_impact_v2.png" data-label="Body Impact">Body Impact</button>
+        <button class="stab stab-active" data-video="landing-assets/medai.mp4" data-label="Watch Demo">Watch Demo</button>
+        <button class="stab" data-screen="landing-assets/body_impact_v2.png" data-label="Body Impact">Body Impact</button>
         <button class="stab" data-screen="landing-assets/scan_result_v2.png" data-label="Scan Result">Scan Result</button>
         <button class="stab" data-screen="landing-assets/scanner_v2.png" data-label="Scanner">Scanner</button>
         <button class="stab" data-screen="landing-assets/dashboard_v2.png" data-label="Dashboard">Dashboard</button>
