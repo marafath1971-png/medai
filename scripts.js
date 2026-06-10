@@ -34,9 +34,9 @@ const remaining = CFG.TOTAL - CFG.TAKEN;
     const lang = (navigator.language || '').toLowerCase();
     const map = [
       { zones: ['Europe/London','Europe/Dublin'], langs: ['en-gb'], flag: '🇬🇧', text: 'Approx. £15/year — less than a coffee a week in the UK.' },
-      { zones: ['Australia/Sydney','Australia/Melbourne','Australia/Brisbane','Australia/Perth','Australia/Adelaide'], langs: ['en-au'], flag: '🇦🇺', text: 'Approx. AU$29/year — that’s less than 2 pharmacy visits.' },
+      { zones: ['Australia/Sydney','Australia/Melbourne','Australia/Brisbane','Australia/Perth','Australia/Adelaide'], langs: ['en-au'], flag: '🇦🇺', text: 'Approx. AU$29/year — that’s less than 2 calendar reviews.' },
       { zones: ['Asia/Dubai','Asia/Muscat'], langs: ['ar-ae'], flag: '🇦🇪', text: 'Approx. AED 70/year — one year of full access for less than a consultation.' },
-      { zones: ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles'], langs: ['en-us'], flag: '🇺🇸', text: 'Just $19 for the full year — less than your monthly pharmacy copay.' },
+      { zones: ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles'], langs: ['en-us'], flag: '🇺🇸', text: 'Just $19 for the full year — less than your monthly calendar copay.' },
     ];
     for (const entry of map) {
       const matchZone = entry.zones.some(z => tz.startsWith(z.split('/')[0]) && tz === z);
@@ -308,7 +308,7 @@ SCREENS.forEach(src => { const i = new Image(); i.src = src; });
 const SHOWCASE = [
   {
     img:    'landing-assets/scanner_v2.png',
-    label:  'AI Medicine Scanner',
+    label:  'AI Routine Scanner',
     top:    'Point & scan any label',
     bot:    'Results in 3 seconds',
     glow:   '#00e88f',
@@ -631,7 +631,7 @@ form?.addEventListener('submit', async e => {
   // Show social share buttons
   const sb = $('shareButtons');
   if (sb) sb.removeAttribute('hidden');
-  const shareText = `I just grabbed early access to MedAI — the AI app that scans medicine labels in 3 seconds. Founding price is only $19/year. Get yours: ${location.origin}${location.pathname}`;
+  const shareText = `I just grabbed early access to MedAI — the AI app that scans schedule labels in 3 seconds. Founding price is only $19/year. Get yours: ${location.origin}${location.pathname}`;
   $('shareX')?.addEventListener('click', () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener'));
   $('shareWa')?.addEventListener('click', () => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener'));
   $('shareLi')?.addEventListener('click', () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.origin + location.pathname)}`, '_blank', 'noopener'));
