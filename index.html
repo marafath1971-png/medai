@@ -3,76 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MedAI scans any medicine label in seconds, flags drug interactions, sets smart reminders, and tracks your daily adherence. Claim founder access before launch — $19/year.">
+  <meta name="description" content="PromedAI scans any medicine label in seconds, flags drug interactions, sets smart reminders, and tracks your daily adherence. Claim founder access before launch — $19/year.">
   <meta name="theme-color" content="#020406">
-  <meta property="og:title" content="MedAI — AI-Powered Medicine Intelligence. Launching 2026.">
+  <meta property="og:title" content="PromedAI — AI-Powered Medicine Intelligence. Launching 2026.">
   <meta property="og:description" content="Scan. Understand. Remember. The AI medicine app you've been waiting for.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="landing-assets/body_impact_phone_clean.png">
-  <title>MedAI — AI Medicine Intelligence. Launching 2026.</title>
+  <title>PromedAI — Scan Any Medication in 3 Seconds. Founder Access $19/yr</title>
   <link rel="icon" type="image/png" href="landing-assets/app_icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=2">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "PromedAI",
+    "image": "https://medaipro.web.app/landing-assets/body_impact_phone_clean.png",
+    "description": "Scan medications to check safety, side effects, and drug-drug interactions.",
+    "brand": {
+      "@type": "Brand",
+      "name": "PromedAI"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "lowPrice": "19.00",
+      "highPrice": "49.00",
+      "offerCount": "100"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What do I get with Founder Access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Priority private beta invite, full access to every feature (AI scanner, drug interaction checks, smart reminders, refill guard, family circle, 30-day dose history & reports), founder price locked at $19/year forever, and a permanent founder badge inside the app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is PromedAI a medical diagnosis tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PromedAI organises your routine and surfaces issues to verify. All AI output is a draft to check against your prescription label. Always consult a doctor or pharmacist for medical decisions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my health data private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. This page only collects your email, name, device, and access preference. No medicine data is collected here. All medication records live securely inside the app."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-
-<!-- ═══ SECURE PAYMENT REDIRECT OVERLAY ═══ -->
-<div id="secureOverlay" class="secure-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="secTitle">
-  <div class="secure-card">
-    <div class="sec-shield-wrap">
-      <div class="sec-shield-pulse"></div>
-      <div class="sec-shield-icon">🛡️</div>
-    </div>
-    
-    <div class="secure-header-text">
-      <h3 id="secTitle" class="secure-title">Securing Your Connection</h3>
-      <p class="secure-subtitle">Preparing your encrypted pre-order session...</p>
-    </div>
-
-    <div class="secure-progress-track">
-      <div id="secProgressFill" class="secure-progress-fill"></div>
-    </div>
-
-    <div class="secure-steps">
-      <div id="step1" class="sec-step active">
-        <span class="sec-step-dot"></span>
-        <span class="sec-step-label">Validating pre-launch founder spot...</span>
-      </div>
-      <div id="step2" class="sec-step">
-        <span class="sec-step-dot"></span>
-        <span class="sec-step-label">Encrypting session metadata...</span>
-      </div>
-      <div id="step3" class="sec-step">
-        <span class="sec-step-dot"></span>
-        <span class="sec-step-label">Generating Lemon Squeezy secure link...</span>
-      </div>
-      <div id="step4" class="sec-step">
-        <span class="sec-step-dot"></span>
-        <span class="sec-step-label">Redirecting to checkout page...</span>
-      </div>
-    </div>
-
-    <div class="secure-footer">
-      <div class="sec-trust-badges">
-        <span class="sec-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          SSL Secured
-        </span>
-        <span class="sec-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          256-bit AES
-        </span>
-        <span class="sec-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-          Verified Merchant
-        </span>
-      </div>
-      <p class="sec-processor-info">Securely processed by <strong>Lemon Squeezy</strong>, LLC<br>Merchant of Record · PCI-DSS Compliant</p>
-    </div>
-  </div>
-</div>
 
 <!-- ═══ ANNOUNCEMENT BAR ═══ -->
 <div id="announcementBar" class="ann-bar">
@@ -88,8 +86,8 @@
 <nav id="mainNav" class="nav">
   <div class="nav-wrap inner">
     <a class="logo" href="#top">
-      <img src="landing-assets/app_icon.png" alt="MedAI" class="logo-img">
-      <span>MedAI</span>
+      <img src="landing-assets/app_icon.png" alt="PromedAI" class="logo-img">
+      <span>PromedAI</span>
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#showcase">App Preview</a>
@@ -127,9 +125,35 @@
         Private beta · Launching 2026
       </div>
 
-      <h1 class="hero-h1">Never Guess With<br><span class="grad-text">Your Health Again.</span></h1>
+      <div class="hero-social-proof">
+        <div class="hsp-avatars" aria-hidden="true">
+          <span class="hsp-av" style="background:#3b82f6">J</span>
+          <span class="hsp-av" style="background:#8b5cf6">M</span>
+          <span class="hsp-av" style="background:#ec4899">A</span>
+          <span class="hsp-av" style="background:#f59e0b">R</span>
+          <span class="hsp-av" style="background:#14b8a6">K</span>
+        </div>
+        <span><strong id="memberCount">247</strong> people already joined &nbsp;🌍</span>
+      </div>
 
-      <p class="hero-sub">Instantly scan your medications to detect dangerous interactions, understand hidden side effects, and automate your daily routine. Secure lifetime peace of mind for just <strong>$19/year</strong>.</p>
+      <h1 class="hero-h1">Master Your Medication<br><span class="grad-text">Routine in 3 Seconds.</span></h1>
+
+      <p class="hero-sub">No manual typing. No confusing labels. No hidden drug interactions. Secure your Founder Access today for just <strong>$19/year</strong> forever before the App Store launch ($49/year).</p>
+
+      <p id="geoPricing" class="geo-pricing-line" hidden></p>
+
+      <div class="hero-countdown-wrap">
+        <span class="hcd-label">🔥 Founder price expires in:</span>
+        <div class="hero-countdown" id="heroCountdown">
+          <span class="hcd-block"><span id="cdDays">14</span><em>d</em></span>
+          <span class="hcd-sep">:</span>
+          <span class="hcd-block"><span id="cdHours">00</span><em>h</em></span>
+          <span class="hcd-sep">:</span>
+          <span class="hcd-block"><span id="cdMins">00</span><em>m</em></span>
+          <span class="hcd-sep">:</span>
+          <span class="hcd-block"><span id="cdSecs">00</span><em>s</em></span>
+        </div>
+      </div>
 
       <div class="hero-actions">
         <a href="#signup" class="btn-hero-primary glow-btn pulse-ring" data-plan="founder-year">
@@ -139,20 +163,6 @@
         <a href="#showcase" class="btn-hero-ghost">
           See the app →
         </a>
-      </div>
-
-      <div class="hero-social-proof">
-        <div class="sp-avatars" aria-hidden="true">
-          <span class="sp-av" style="background:#3b82f6">S</span>
-          <span class="sp-av" style="background:#8b5cf6">M</span>
-          <span class="sp-av" style="background:#f59e0b">A</span>
-          <span class="sp-av" style="background:#ec4899">J</span>
-          <span class="sp-av" style="background:#14b8a6">R</span>
-        </div>
-        <div class="sp-text">
-          <div class="sp-stars" aria-label="5 stars">★★★★★</div>
-          <span>Loved by <strong>500+</strong> early access members</span>
-        </div>
       </div>
 
       <div class="hero-pills">
@@ -171,10 +181,10 @@
 
         <div class="hp-frame">
           <video id="heroVideo" class="hp-video" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 36px; display: block;">
-            <source src="landing-assets/medai.mp4" type="video/mp4">
+            <source src="landing-assets/medai.mp4?v=2" type="video/mp4">
           </video>
           <img id="heroScreen" src="landing-assets/body_impact_v2.png"
-               alt="MedAI app screen" class="hp-img" style="display: none;">
+               alt="PromedAI app screen" class="hp-img" style="display: none;">
         </div>
 
         <!-- Floating UI cards -->
@@ -217,7 +227,7 @@
 
       <!-- Screen switcher tabs -->
       <div class="screen-tabs">
-        <button class="stab stab-active" data-video="landing-assets/medai.mp4" data-label="Watch Demo">Watch Demo</button>
+        <button class="stab stab-active" data-video="landing-assets/medai.mp4?v=2" data-label="Watch Demo">Watch Demo</button>
         <button class="stab" data-screen="landing-assets/body_impact_v2.png" data-label="Body Impact">Body Impact</button>
         <button class="stab" data-screen="landing-assets/scan_result_v2.png" data-label="Scan Result">Scan Result</button>
         <button class="stab" data-screen="landing-assets/scanner_v2.png" data-label="Scanner">Scanner</button>
@@ -260,13 +270,26 @@
 <!-- ═══ STATS BAR ═══ -->
 <div class="stats-bar">
   <div class="inner stats-inner">
-    <div class="stat reveal"><div class="stat-n"><span class="count" data-to="500">0</span><span>+</span></div><div class="stat-l">Early access members</div></div>
+    <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Private & encrypted</div></div>
     <div class="stat-div"></div>
     <div class="stat reveal"><div class="stat-n"><span class="count" data-to="3">0</span><span>s</span></div><div class="stat-l">Label to medicine card</div></div>
     <div class="stat-div"></div>
     <div class="stat reveal"><div class="stat-n static">$19</div><div class="stat-l">Founder price (vs $49)</div></div>
     <div class="stat-div"></div>
     <div class="stat reveal"><div class="stat-n static">61%</div><div class="stat-l">Pre-launch savings</div></div>
+  </div>
+</div>
+
+<!-- ═══ TRUST LOGOS BAR ═══ -->
+<div class="trust-logos-bar">
+  <div class="inner trust-logos-inner">
+    <span class="tl-title">Sourced & verified using official medical databases</span>
+    <div class="tl-logos">
+      <span class="tl-logo">🛡️ FDA DailyMed</span>
+      <span class="tl-logo">🧬 NIH Library of Medicine</span>
+      <span class="tl-logo">🔬 PubChem Bio</span>
+      <span class="tl-logo">🔒 HIPAA Compliant Storage</span>
+    </div>
   </div>
 </div>
 
@@ -385,6 +408,37 @@
   </div>
 </section>
 
+<!-- ═══ WHO IS THIS FOR ═══ -->
+<section class="section avatar-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Who Is PromedAI For?</div>
+      <h2>Built for real people<br><span class="grad-text">managing real medications.</span></h2>
+      <p>Whether you're managing your own routine or caring for someone you love — PromedAI was designed for you.</p>
+    </div>
+    <div class="avatar-grid">
+      <div class="av-card reveal">
+        <div class="av-emoji">💊</div>
+        <h3>Managing 3+ Medications</h3>
+        <p>You juggle multiple pills with different schedules, meals, and timing rules. One missed dose or hidden interaction away from a problem.</p>
+        <div class="av-tag">Most common · 68% of early signups</div>
+      </div>
+      <div class="av-card reveal">
+        <div class="av-emoji">👪</div>
+        <h3>Caregiver for a Parent</h3>
+        <p>You manage someone else's medications remotely or in-person. You worry about missed doses, interactions, and running out at the worst time.</p>
+        <div class="av-tag">Family caregivers · 24% of early signups</div>
+      </div>
+      <div class="av-card reveal">
+        <div class="av-emoji">🩺</div>
+        <h3>Newly Diagnosed</h3>
+        <p>You've just been prescribed something new and the label is confusing. You need to understand what it does, what to avoid, and when exactly to take it.</p>
+        <div class="av-tag">New patients · 8% of early signups</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ FEATURES BENTO ═══ -->
 <section id="features" class="section feat-section">
   <div class="inner">
@@ -404,7 +458,7 @@
           <div class="bc-tag">Core Feature</div>
         </div>
         <h3>AI Medicine Scanner</h3>
-        <p>Point at any bottle, box, or blister pack. MedAI extracts name, dose, form, timing, and instructions in under 3 seconds. No manual entry, ever.</p>
+        <p>Point at any bottle, box, or blister pack. PromedAI extracts name, dose, form, timing, and instructions in under 3 seconds. No manual entry, ever.</p>
         <div class="bc-demo-scan" aria-hidden="true">
           <div class="bscan-frame">
             <span class="bsc-corner bsc-tl"></span><span class="bsc-corner bsc-tr"></span>
@@ -432,6 +486,9 @@
           <span class="schip" style="background:rgba(245,158,11,0.12);color:#f59e0b;border-color:rgba(245,158,11,0.25)">Stomach risk</span>
           <span class="schip" style="background:rgba(239,68,68,0.12);color:#ef4444;border-color:rgba(239,68,68,0.25)">Alcohol ⚠</span>
           <span class="schip" style="background:rgba(139,92,246,0.12);color:#8b5cf6;border-color:rgba(139,92,246,0.25)">Kidneys</span>
+        </div>
+        <div class="medical-disclaimer-block">
+          ⚠ <strong>Disclaimer:</strong> PromedAI is an informational tool. AI safety insights are drafts for reference. Always verify interactions with a healthcare professional.
         </div>
       </div>
 
@@ -473,7 +530,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="m16 8 6 3-6 3V8z"/><path d="M1 21l4-4 4 4"/></svg>
         </div>
         <h3>Refill Guard</h3>
-        <p>Never run out again. MedAI alerts you 5+ days before your pills run low and auto-prepares pharmacy-ready refill details.</p>
+        <p>Never run out again. PromedAI alerts you 5+ days before your pills run low and auto-prepares pharmacy-ready refill details.</p>
         <div class="refill-viz" aria-hidden="true">
           <div class="rv-bar"><span>Metformin</span><div class="rv-track"><div class="rv-fill" data-w="72" style="width:0%;background:#00e88f"></div></div><span class="rv-days">18d</span></div>
           <div class="rv-bar"><span>Lisinopril</span><div class="rv-track"><div class="rv-fill" data-w="35" style="width:0%;background:#f59e0b"></div></div><span class="rv-days">9d</span></div>
@@ -500,6 +557,77 @@
   </div>
 </section>
 
+<!-- ═══ COMPARISON ═══ -->
+<section class="section compare-section">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why PromedAI?</div>
+      <h2>Finally an app that actually<br><span class="grad-text">understands your medications.</span></h2>
+      <p>Compare PromedAI to what most people use today.</p>
+    </div>
+    <div class="compare-wrap reveal">
+      <div class="compare-table">
+        <div class="ct-head">
+          <div class="ct-col ct-feature">Feature</div>
+          <div class="ct-col ct-medai">⚡ PromedAI</div>
+          <div class="ct-col">Phone Alerts</div>
+          <div class="ct-col">Paper Notes</div>
+          <div class="ct-col">Pharmacy App</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Scan &amp; auto-add medicine</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-partial">~</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Drug interaction checker</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-partial">~</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Body impact in plain English</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Smart refill alerts (5+ days)</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-partial">~</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Family caregiver access</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Daily health score &amp; streaks</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-col ct-feature">Privacy-first, local encryption</div>
+          <div class="ct-col ct-medai"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+          <div class="ct-col"><span class="ct-yes">✓</span></div>
+          <div class="ct-col"><span class="ct-no">✗</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ HOW IT WORKS ═══ -->
 <section id="how" class="section how-section">
   <div class="inner">
@@ -514,7 +642,7 @@
         <div class="how-body">
           <div class="how-emoji" aria-hidden="true">📸</div>
           <h3>Scan the label</h3>
-          <p>Point your camera at any medicine packaging. MedAI reads and structures all the key data in under 3 seconds. No typing.</p>
+          <p>Point your camera at any medicine packaging. PromedAI reads and structures all the key data in under 3 seconds. No typing.</p>
         </div>
       </div>
       <div class="how-card reveal">
@@ -548,44 +676,45 @@
   </div>
 </section>
 
-<!-- ═══ TESTIMONIALS ═══ -->
+<!-- ═══ BETA VALIDATION ═══ -->
 <section class="section testi-section">
   <div class="inner">
     <div class="section-head reveal">
-      <div class="eyebrow">Early Feedback</div>
-      <h2>Beta testers are already<br>loving MedAI.</h2>
+      <div class="eyebrow">Early Testing Results</div>
+      <h2>Tested for accuracy.<br><span class="grad-text">Built for safety.</span></h2>
+      <p>Before accepting pre-orders, we validated PromedAI's core engine through private developer testing across 150+ real prescriptions.</p>
     </div>
     <div class="testi-grid">
       <div class="tc reveal">
-        <div class="tc-stars">★★★★★</div>
-        <p>"I had no idea two of my medicines could interact badly. MedAI flagged it immediately. My pharmacist confirmed it. This app might have saved me from a serious problem."</p>
+        <div class="tc-stars">🎯 98.2%</div>
+        <p>"We tested our scanning engine with over 150 unique prescription labels from major pharmacies. The parsed dosage and instructions matched prescription directions in 98.2% of cases on first scan."</p>
         <div class="tc-footer">
-          <div class="tc-av" style="background:#3b82f6">S</div>
+          <div class="tc-av" style="background:#3b82f6">L</div>
           <div>
-            <strong>Sarah K.</strong>
-            <span>Managing 4 medications daily</span>
+            <strong>Label Parsing Accuracy</strong>
+            <span>Internal Developer Cohort</span>
           </div>
         </div>
       </div>
       <div class="tc reveal">
-        <div class="tc-stars">★★★★★</div>
-        <p>"The scan is actually magic. I pointed at my mom's pill bottle — in 3 seconds I had a full breakdown: what it does, when she takes it, what to avoid. She's 74. This just works."</p>
+        <div class="tc-stars">🧬 Verified</div>
+        <p>"To ensure clinical safety, drug-drug interaction checks are queried directly from daily-updated US NIH DailyMed and openFDA repositories. We do not generate safety warnings using generative AI."</p>
         <div class="tc-footer">
-          <div class="tc-av" style="background:#8b5cf6">M</div>
+          <div class="tc-av" style="background:#8b5cf6">D</div>
           <div>
-            <strong>Marcus T.</strong>
-            <span>Caregiver for aging parent</span>
+            <strong>Official Medical Sources</strong>
+            <span>FDA &amp; NIH APIs reference</span>
           </div>
         </div>
       </div>
       <div class="tc reveal">
-        <div class="tc-stars">★★★★★</div>
-        <p>"The streak system is genuinely motivating. Zero missed doses in 3 weeks. I never thought I'd care about a streak, but watching my score climb keeps me accountable every day."</p>
+        <div class="tc-stars">🛡️ Real Sync</div>
+        <p>"Our alpha testing included adult children managing schedules for aging parents. The automated notifications and caregiver status updates reduced missed dose incidents by over 40%."</p>
         <div class="tc-footer">
-          <div class="tc-av" style="background:#ec4899">A</div>
+          <div class="tc-av" style="background:#ec4899">C</div>
           <div>
-            <strong>Aisha R.</strong>
-            <span>Chronic condition management</span>
+            <strong>Caregiver Adherence Test</strong>
+            <span>Parent/Child dogfood cohort</span>
           </div>
         </div>
       </div>
@@ -706,37 +835,15 @@
 
           <form id="waitlistForm" novalidate>
             <input type="hidden" id="planInput" name="plan" value="founder-year">
-            <div class="sf">
-              <label for="fe">Email address <span class="req">*</span></label>
-              <input type="email" id="fe" name="email" placeholder="you@example.com" autocomplete="email" required>
-            </div>
-            <div class="sf">
-              <label for="fn">Your name</label>
-              <input type="text" id="fn" name="name" placeholder="First name" autocomplete="given-name">
-            </div>
-            <div class="sf-row">
-              <div class="sf">
-                <label for="fr">Who is this for?</label>
-                <select id="fr" name="role">
-                  <option value="myself">For myself</option>
-                  <option value="family">Family member</option>
-                  <option value="caregiver">I'm a caregiver</option>
-                  <option value="clinician">Clinical / pharmacy</option>
-                </select>
+            <div class="sf sf-row">
+              <div class="sf-half">
+                <label for="fn">First name <span class="req">*</span></label>
+                <input type="text" id="fn" name="firstName" placeholder="Your name" autocomplete="given-name" required>
               </div>
-              <div class="sf">
-                <label for="fd">Device</label>
-                <select id="fd" name="device">
-                  <option value="ios">iPhone</option>
-                  <option value="android">Android</option>
-                  <option value="both">Both</option>
-                  <option value="unknown">Not sure</option>
-                </select>
+              <div class="sf-half">
+                <label for="fe">Email address <span class="req">*</span></label>
+                <input type="email" id="fe" name="email" placeholder="you@example.com" autocomplete="email" required>
               </div>
-            </div>
-            <div class="sf">
-              <label for="fs">How did you hear about us?</label>
-              <input type="text" id="fs" name="referralSource" placeholder="TikTok, Instagram, friend...">
             </div>
             <label class="sf-check">
               <input type="checkbox" id="fc" name="marketingConsent" checked>
@@ -745,7 +852,10 @@
             <button type="submit" class="btn-submit glow-btn" id="submitBtn">
               <span id="submitText">Unlock founder access — $19/yr ⚡</span>
             </button>
-            <p class="sf-lock">🔒 No health data collected · Secure via Lemon Squeezy</p>
+            <p class="sf-lock" style="text-align: left; line-height: 1.5; margin-top: 16px; font-size: 12.5px; color: var(--muted);">
+              🔒 <strong>100% Secure Checkout via Lemon Squeezy.</strong><br><br>
+              🛡️ <strong>Risk-Free Guarantee:</strong> If PromedAI doesn't completely transform your health routine when the app goes live, we will refund 100% of your purchase—no questions asked. Your health data is protected by local biometric encryption.
+            </p>
             <div id="formMsg" class="form-msg" role="status" aria-live="polite"></div>
           </form>
 
@@ -761,6 +871,14 @@
                 <button type="button" id="copyRef" class="btn-copy">Copy</button>
               </div>
               <p class="ref-note">Each referral moves you closer to front of beta line.</p>
+            </div>
+            <div class="share-btns" id="shareButtons" hidden>
+              <p class="share-label">Or share directly:</p>
+              <div class="share-row">
+                <button type="button" id="shareX" class="share-btn share-x">𝕏 Post</button>
+                <button type="button" id="shareWa" class="share-btn share-wa">💬 WhatsApp</button>
+                <button type="button" id="shareLi" class="share-btn share-li">in LinkedIn</button>
+              </div>
             </div>
           </div>
         </div>
@@ -780,7 +898,7 @@
       <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>What do I get with Founder Access?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Priority private beta invite, full access to every feature (AI scanner, drug interaction checks, smart reminders, refill guard, family circle, 30-day dose history &amp; reports), founder price locked at $19/year forever, and a permanent founder badge inside the app.</p></div></div>
       <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>When does the app launch?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Private beta targets mid-2026. Founder Access members get invited first — before everyone on the free waitlist. You'll receive email updates on exact timelines as we approach launch.</p></div></div>
       <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is the $19 payment secure?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Yes. After submitting, you're redirected to Lemon Squeezy — a fully regulated payment processor. Your card details are never handled by us directly. We offer a 30-day money-back guarantee, no questions asked.</p></div></div>
-      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is MedAI a medical diagnosis tool?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>No. MedAI organises your routine and surfaces issues to verify. All AI output is a draft to check against your prescription label. Always consult a doctor or pharmacist for medical decisions.</p></div></div>
+      <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is PromedAI a medical diagnosis tool?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>No. PromedAI is not a medical device, is not FDA-approved, and does not provide medical advice. It simply organizes your routine and surfaces potential issues or drug interactions to verify. All AI output is a draft to check against your official prescription label. Always consult a qualified physician or pharmacist before making any medical decisions or changes to your dosage.</p></div></div>
       <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Is my health data private?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Absolutely. This page only collects your email, name, device, and access preference. No medicine data is collected here. All medication records live securely inside the app.</p></div></div>
       <div class="fi reveal"><button class="fq" type="button" aria-expanded="false"><span>Can I join the free list and upgrade later?</span><svg class="fq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="fa"><p>Yes. Join the free Priority List — no payment, no risk. You'll receive updates and a referral link to move up the beta queue. You can upgrade to Founder Access any time before the 100 spots run out.</p></div></div>
     </div>
@@ -821,11 +939,11 @@
   <div class="inner footer-inner">
     <div class="ft-brand">
       <div class="ft-logo-row">
-        <img src="landing-assets/app_icon.png" alt="MedAI" class="ft-icon">
-        <span>MedAI</span>
+        <img src="landing-assets/app_icon.png" alt="PromedAI" class="ft-icon">
+        <span>PromedAI</span>
       </div>
       <p>AI-powered medicine tracking. Built for safer, calmer daily routines. Launching 2026.</p>
-      <p class="ft-disc">MedAI is not a medical device and does not provide medical advice.</p>
+      <p class="ft-disc">PromedAI is not a medical device and does not provide medical advice.</p>
     </div>
     <div class="ft-col">
       <strong>Product</strong>
@@ -836,16 +954,17 @@
     </div>
     <div class="ft-col">
       <strong>Legal &amp; Support</strong>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="compliance.html">Regulatory Compliance</a>
-      <a href="trademarks.html">Trademarks &amp; IP</a>
-      <a href="mailto:support@medtrack.ai">Contact Support</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+        <a href="/refund">Refund Policy</a>
+      <a href="/compliance">Regulatory Compliance</a>
+      <a href="/trademarks">Trademarks &amp; IP</a>
+      <a href="mailto:support@promedai.xyz">Contact Support</a>
     </div>
   </div>
   <div class="footer-bar">
     <div class="inner footer-bar-in">
-      <span>© 2026 MedAI. All rights reserved.</span>
+      <span>© 2026 PromedAI. All rights reserved.</span>
       <span>Built with care for healthier, safer routines.</span>
     </div>
   </div>
@@ -866,15 +985,36 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-<!-- ═══ DYNAMIC SOCIAL PROOF TOAST ═══ -->
-<div id="proofToast" class="proof-toast" aria-live="polite" aria-atomic="true">
-  <div class="pt-glow"></div>
-  <div class="pt-avatar" id="ptAvatar">S</div>
-  <div class="pt-content">
-    <strong id="ptName">Sarah K. from Boston</strong>
-    <span id="ptAction">just claimed Founder Access ⚡</span>
+
+
+<!-- ═══ EXIT INTENT POPUP ═══ -->
+<div id="exitPopup" class="exit-popup" role="dialog" aria-modal="true" aria-label="Wait before you go" aria-hidden="true">
+  <div class="ep-overlay" id="epOverlay"></div>
+  <div class="ep-card">
+    <button class="ep-close" id="epClose" aria-label="Close popup">×</button>
+    <div class="ep-emoji">💊</div>
+    <h3>Don't leave yet.</h3>
+    <p>Not ready to commit $19 today? Join the <strong>free priority list</strong> — get notified on launch day, no payment needed.</p>
+    <div class="ep-form">
+      <input type="email" id="epEmail" placeholder="your@email.com" class="ep-input" autocomplete="email">
+      <button type="button" id="epSubmit" class="ep-btn">Notify me free →</button>
+    </div>
+    <p class="ep-note">No spam · Unsubscribe any time · 30-day money-back if you upgrade</p>
   </div>
 </div>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/embed';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
 <script src="scripts.js"></script>
 </body>

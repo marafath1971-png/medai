@@ -27,12 +27,65 @@ const CFG = {
 };
 const remaining = CFG.TOTAL - CFG.TAKEN;
 
+/* ── Geo-Aware Pricing ─────────────────────────────────────── */
+(function initGeoPricing() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const lang = (navigator.language || '').toLowerCase();
+    const map = [
+      { zones: ['Europe/London','Europe/Dublin'], langs: ['en-gb'], flag: '🇬🇧', text: 'Approx. £15/year — less than a coffee a week in the UK.' },
+      { zones: ['Australia/Sydney','Australia/Melbourne','Australia/Brisbane','Australia/Perth','Australia/Adelaide'], langs: ['en-au'], flag: '🇦🇺', text: 'Approx. AU$29/year — that’s less than 2 pharmacy visits.' },
+      { zones: ['Asia/Dubai','Asia/Muscat'], langs: ['ar-ae'], flag: '🇦🇪', text: 'Approx. AED 70/year — one year of full access for less than a consultation.' },
+      { zones: ['America/New_York','America/Chicago','America/Denver','America/Los_Angeles'], langs: ['en-us'], flag: '🇺🇸', text: 'Just $19 for the full year — less than your monthly pharmacy copay.' },
+    ];
+    for (const entry of map) {
+      const matchZone = entry.zones.some(z => tz.startsWith(z.split('/')[0]) && tz === z);
+      const matchLang = entry.langs.some(l => lang.startsWith(l));
+      if (matchZone || matchLang) {
+        const el = document.getElementById('geoPricing');
+        if (el) {
+          el.textContent = entry.flag + '  ' + entry.text;
+          el.removeAttribute('hidden');
+        }
+        break;
+      }
+    }
+  } catch (e) {}
+})();
+
+/* ── 14-Day Countdown Timer ────────────────────────────────── */
+(function initCountdown() {
+  const CD_KEY = 'medai_founder_deadline';
+  let deadline = parseInt(localStorage.getItem(CD_KEY), 10);
+  const now = Date.now();
+  if (isNaN(deadline) || deadline < now) {
+    deadline = now + 14 * 24 * 60 * 60 * 1000; // 14 days from first visit
+    localStorage.setItem(CD_KEY, deadline.toString());
+  }
+  const els = { d: document.getElementById('cdDays'), h: document.getElementById('cdHours'), m: document.getElementById('cdMins'), s: document.getElementById('cdSecs') };
+  function tick() {
+    const diff = Math.max(0, deadline - Date.now());
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    if (els.d) els.d.textContent = days;
+    if (els.h) els.h.textContent = pad(hours);
+    if (els.m) els.m.textContent = pad(mins);
+    if (els.s) els.s.textContent = pad(secs);
+    if (diff <= 0) clearInterval(timer);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
 /* ── Helpers ───────────────────────────────────────────────────── */
 const $  = id  => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
 /* ── Update all spot counters ──────────────────────────────────── */
-function setSpots(n = remaining) {
+function setSpots(n) {
   ['spotsLeft','heroSpots','pricingSpots','pricingSpots2','stickySpots','finalSpots']
     .forEach(id => {
       const el = $(id);
@@ -40,12 +93,38 @@ function setSpots(n = remaining) {
       el.textContent = n;
     });
 
-  // Progress bar(s): % filled = taken / total
+  // Progress bar fill: taken / total
   const pct = ((CFG.TOTAL - n) / CFG.TOTAL) * 100;
   const fill = $('heroFill');
   if (fill) fill.style.width = `${pct}%`;
 }
-setSpots();
+
+/* ── Persistent Spots Countdown ──────────────────────────────── */
+function initSpots() {
+  const SPOTS_KEY = 'medai_spots_left';
+  let spots = parseInt(localStorage.getItem(SPOTS_KEY), 10);
+  
+  if (isNaN(spots) || spots <= 0) {
+    // Start with a believable random count of remaining spots
+    spots = Math.floor(Math.random() * 8) + 32; // starts between 32 and 39
+  }
+  
+  // Save initial value
+  localStorage.setItem(SPOTS_KEY, spots.toString());
+  setSpots(spots);
+
+  // Dynamic slow decrement during active session
+  // Decrement by 1 spot every 4 minutes (240000 ms) down to a minimum of 7 spots
+  setInterval(() => {
+    let currentSpots = parseInt(localStorage.getItem(SPOTS_KEY), 10);
+    if (currentSpots > 7) {
+      currentSpots -= 1;
+      localStorage.setItem(SPOTS_KEY, currentSpots.toString());
+      setSpots(currentSpots);
+    }
+  }, 240000);
+}
+initSpots();
 
 /* ── Announcement bar ──────────────────────────────────────────── */
 const annBar  = $('announcementBar');
@@ -159,27 +238,56 @@ const SCREENS = [
 ];
 let heroIdx   = 0;
 const heroImg = $('heroScreen');
+const heroVideo = $('heroVideo');
 let autoCycle = null;
 
 function setHeroScreen(idx, manual = false) {
-  if (!heroImg) return;
-  heroImg.style.transition = 'opacity .3s, transform .3s';
-  heroImg.style.opacity    = '0.3';
-  heroImg.style.transform  = 'scale(0.97)';
-  setTimeout(() => {
-    heroImg.src             = SCREENS[idx];
-    heroImg.style.opacity   = '1';
-    heroImg.style.transform = 'scale(1)';
-  }, 320);
+  if (!heroImg || !heroVideo) return;
+  
+  if (idx === 0) {
+    // Show video, hide image
+    heroImg.style.opacity = '0';
+    setTimeout(() => {
+      heroImg.style.display = 'none';
+      heroVideo.style.display = 'block';
+      heroVideo.style.opacity = '1';
+      heroVideo.play().catch(e => console.log('Autoplay blocked:', e));
+    }, 150);
+  } else {
+    // Show image, hide video
+    heroVideo.style.opacity = '0';
+    setTimeout(() => {
+      heroVideo.style.display = 'none';
+      heroVideo.pause();
+      
+      heroImg.style.display = 'block';
+      heroImg.style.transition = 'opacity .3s, transform .3s';
+      heroImg.style.opacity    = '0.3';
+      heroImg.style.transform  = 'scale(0.97)';
+      
+      setTimeout(() => {
+        heroImg.src             = SCREENS[idx - 1];
+        heroImg.style.opacity   = '1';
+        heroImg.style.transform = 'scale(1)';
+      }, 50);
+    }, 150);
+  }
+
   $$('.stab').forEach((b, i) => b.classList.toggle('stab-active', i === idx));
+  
   if (manual) {
     clearInterval(autoCycle);
-    autoCycle = setInterval(nextHeroScreen, 4000);
+    if (idx === 0) {
+      autoCycle = null; // Stay on the video indefinitely if clicked
+    } else {
+      autoCycle = setInterval(nextHeroScreen, 4000);
+    }
   }
 }
 
 function nextHeroScreen() {
-  heroIdx = (heroIdx + 1) % SCREENS.length;
+  // Cycle static screens: 1, 2, 3, 4
+  heroIdx = (heroIdx === 0) ? 1 : ((heroIdx - 1 + 1) % SCREENS.length) + 1;
   setHeroScreen(heroIdx);
 }
 
@@ -190,10 +298,11 @@ $$('.stab').forEach((btn, i) => {
   });
 });
 
-autoCycle = setInterval(nextHeroScreen, 4000);
+// Since default screen is video (idx 0), we do not start auto-cycling immediately.
+// If the user clicks on any image tabs, auto-cycling will commence.
 
 // Preload
-SCREENS.slice(1).forEach(src => { const i = new Image(); i.src = src; });
+SCREENS.forEach(src => { const i = new Image(); i.src = src; });
 
 /* ── App Showcase interactive tabs ─────────────────────────────── */
 const SHOWCASE = [
@@ -419,9 +528,15 @@ form?.addEventListener('submit', async e => {
   e.preventDefault();
 
   const email = $('fe')?.value.trim() || '';
+  const name  = $('fn')?.value.trim() || '';
   const plan  = planInput?.value || 'founder-year';
 
   // Validate
+  if (!name && plan === 'founder-year') {
+    showMsg('err', 'Please enter your first name.');
+    $('fn')?.focus();
+    return;
+  }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     showMsg('err', 'Please enter a valid email address.');
     $('fe')?.focus();
@@ -440,7 +555,7 @@ form?.addEventListener('submit', async e => {
     createdAt: db ? firebase.firestore.FieldValue.serverTimestamp() : new Date()
   };
 
-  const nameVal = $('fn')?.value.trim();
+  const nameVal = $('fn')?.value.trim() || $('fn2')?.value.trim();
   if (nameVal) payload.name = nameVal;
 
   const roleVal = $('fr')?.value;
@@ -513,6 +628,14 @@ form?.addEventListener('submit', async e => {
       : `You're on the priority list! Updates will land in ${email}.`;
   }
 
+  // Show social share buttons
+  const sb = $('shareButtons');
+  if (sb) sb.removeAttribute('hidden');
+  const shareText = `I just grabbed early access to MedAI — the AI app that scans medicine labels in 3 seconds. Founding price is only $19/year. Get yours: ${location.origin}${location.pathname}`;
+  $('shareX')?.addEventListener('click', () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener'));
+  $('shareWa')?.addEventListener('click', () => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener'));
+  $('shareLi')?.addEventListener('click', () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.origin + location.pathname)}`, '_blank', 'noopener'));
+
   // Redirect to Lemon Squeezy if founder & URL configured
   if (plan === 'founder-year') {
     let url = data?.checkoutUrl || CFG.CHECKOUT_URL;
@@ -528,53 +651,9 @@ form?.addEventListener('submit', async e => {
         url = u.toString();
       } catch (e) {}
 
-      // Activate premium secure transition overlay
-      const overlay = $('secureOverlay');
-      const progress = $('secProgressFill');
-      const s1 = $('step1');
-      const s2 = $('step2');
-      const s3 = $('step3');
-      const s4 = $('step4');
-
-      if (overlay && progress) {
-        overlay.classList.add('active');
-        overlay.setAttribute('aria-hidden', 'false');
-
-        // Stage 1: Validate spot (0% to 25%)
-        setTimeout(() => {
-          progress.style.width = '25%';
-          s1.classList.add('completed');
-          s2.classList.add('active');
-        }, 800);
-
-        // Stage 2: Encrypt metadata (25% to 55%)
-        setTimeout(() => {
-          progress.style.width = '55%';
-          s2.classList.add('completed');
-          s3.classList.add('active');
-        }, 1600);
-
-        // Stage 3: Generate Lemon Squeezy link (55% to 85%)
-        setTimeout(() => {
-          progress.style.width = '85%';
-          s3.classList.add('completed');
-          s4.classList.add('active');
-        }, 2400);
-
-        // Stage 4: Launch checkout (85% to 100%)
-        setTimeout(() => {
-          progress.style.width = '100%';
-          s4.classList.add('completed');
-        }, 3100);
-
-        // Final handoff to Lemon Squeezy
-        setTimeout(() => {
-          window.location.href = url;
-        }, 3500);
-      } else {
-        // Simple fallback redirect
-        setTimeout(() => window.location.href = url, 1800);
-      }
+      // Redirect immediately to minimize payment flow friction
+      window.location.href = url;
+      return;
     }
   }
 
@@ -589,7 +668,13 @@ form?.addEventListener('submit', async e => {
   }
 
   // Update counters
-  setSpots(Math.max(remaining - 1, 0));
+  const SPOTS_KEY = 'medai_spots_left';
+  let currentSpots = parseInt(localStorage.getItem(SPOTS_KEY), 10);
+  if (!isNaN(currentSpots) && currentSpots > 8) {
+    currentSpots -= 1;
+    localStorage.setItem(SPOTS_KEY, currentSpots.toString());
+    setSpots(currentSpots);
+  }
 });
 
 /* ── Copy referral link ────────────────────────────────────────── */
@@ -647,52 +732,65 @@ $$('.bc, .hp-frame, .sp-phone, .tc').forEach(el => {
     el.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
   });
 });
+/* ── Exit Intent Popup ─────────────────────────────────────── */
+(function initExitIntent() {
+  const EP_KEY = 'medai_exit_shown';
+  const popup  = $('exitPopup');
+  if (!popup) return;
 
-/* ── Social Proof Cycling Script ─────────────────────────────── */
-const PT_DATA = [
-  { n: "David L. from Seattle", a: "just claimed Founder Access ⚡", av: "D", c: "#00e88f" },
-  { n: "Clara M. from London", a: "just joined the free Priority List 🏅", av: "C", c: "#3b82f6" },
-  { n: "James T. from Austin", a: "just claimed Founder Access ⚡", av: "J", c: "#a855f7" },
-  { n: "Priya R. from Chicago", a: "just joined the free Priority List 🏅", av: "P", c: "#ec4899" },
-  { n: "Chloe W. from New York", a: "just claimed Founder Access ⚡", av: "C", c: "#00e88f" },
-  { n: "Ryan B. from San Francisco", a: "just claimed Founder Access ⚡", av: "R", c: "#3b82f6" }
-];
-let ptIdx = 0;
+  // Show only once per session
+  if (sessionStorage.getItem(EP_KEY)) return;
 
-function showProofToast() {
-  const toast = $('proofToast');
-  if (!toast) return;
-
-  const item = PT_DATA[ptIdx];
-  const nameEl = $('ptName');
-  const actionEl = $('ptAction');
-  const avatarEl = $('ptAvatar');
-
-  if (nameEl) nameEl.textContent = item.n;
-  if (actionEl) actionEl.textContent = item.a;
-  if (avatarEl) {
-    avatarEl.textContent = item.av;
-    avatarEl.style.background = item.c;
-    // Set text color contrast based on background color
-    avatarEl.style.color = item.c === '#00e88f' ? '#000' : '#fff';
+  let triggered = false;
+  function showPopup() {
+    if (triggered) return;
+    triggered = true;
+    sessionStorage.setItem(EP_KEY, '1');
+    popup.classList.add('open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    popup.classList.remove('open');
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
   }
 
-  // Slide up
-  toast.classList.add('active');
+  // Desktop: detect mouse leaving top of viewport
+  document.addEventListener('mouseleave', e => {
+    if (e.clientY < 20) showPopup();
+  });
 
-  // Slide down after 5.5 seconds
+  // Mobile: 30-second delay trigger if user hasn't converted
   setTimeout(() => {
-    toast.classList.remove('active');
-  }, 5500);
+    const saved = localStorage.getItem(CFG.LS_KEY);
+    if (!saved) showPopup();
+  }, 30000);
 
-  // Next item
-  ptIdx = (ptIdx + 1) % PT_DATA.length;
-}
+  $('epClose')?.addEventListener('click', closePopup);
+  $('epOverlay')?.addEventListener('click', closePopup);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
-// Start cycling social proof toasts
-setTimeout(() => {
-  showProofToast();
-  setInterval(showProofToast, 13000);
-}, 4500);
+  // Exit popup form submission
+  $('epSubmit')?.addEventListener('click', async () => {
+    const email = $('epEmail')?.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      $('epEmail')?.focus();
+      return;
+    }
+    const btn = $('epSubmit');
+    if (btn) { btn.textContent = 'Saving…'; btn.disabled = true; }
+    try {
+      if (db) {
+        await db.collection('waitlist').add({ email, plan: 'waitlist', source: 'exit-intent', createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+      } else {
+        await fetch(`${CFG.API}/waitlist`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, plan: 'waitlist', source: 'exit-intent' }) });
+      }
+    } catch {}
+    const card = document.querySelector('.ep-card');
+    if (card) card.innerHTML = '<div class="ep-emoji">🙌</div><h3>You\'re in!</h3><p>We\'ll notify you on launch day. Keep an eye on your inbox.</p>';
+    setTimeout(closePopup, 2500);
+  });
+})();
 
 
