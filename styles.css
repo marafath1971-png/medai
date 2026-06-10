@@ -984,7 +984,7 @@ h1,h2,h3{font-family:var(--disp);color:#fff;letter-spacing:-.03em;line-height:1.
 }
 
 /* ================================================================
-   SECURE REDIRECT OVERLAY (LEMON SQUEEZY UX)
+   SECURE REDIRECT OVERLAY (Paddle UX)
 ================================================================ */
 .secure-overlay {
   position: fixed;

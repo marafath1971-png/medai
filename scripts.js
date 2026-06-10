@@ -23,7 +23,7 @@ const CFG = {
   TOTAL:        100,
   TAKEN:        53,
   LS_KEY:       'medai_v3',
-  CHECKOUT_URL: 'https://medproai.lemonsqueezy.com/checkout/buy/1d5fd178-2432-453f-8b59-f325cd6415e3', // Real Lemon Squeezy checkout URL
+  CHECKOUT_URL: 'https://medproai.paddle.com/checkout/buy/1d5fd178-2432-453f-8b59-f325cd6415e3', // Real Paddle checkout URL
 };
 const remaining = CFG.TOTAL - CFG.TAKEN;
 
@@ -481,7 +481,7 @@ const PLANS = {
     btn:  'Join free priority list →',
   },
   'founder-year': {
-    hint: 'Reserve your spot. Secure Lemon Squeezy checkout opens after you submit.',
+    hint: 'Reserve your spot. Secure Paddle checkout opens after you submit.',
     btn:  'Unlock founder access — $19/yr ⚡',
   },
 };
@@ -636,7 +636,7 @@ form?.addEventListener('submit', async e => {
   $('shareWa')?.addEventListener('click', () => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener'));
   $('shareLi')?.addEventListener('click', () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.origin + location.pathname)}`, '_blank', 'noopener'));
 
-  // Redirect to Lemon Squeezy if founder & URL configured
+  // Redirect to Paddle if founder & URL configured
   if (plan === 'founder-year') {
     let url = data?.checkoutUrl || CFG.CHECKOUT_URL;
     if (url) {
